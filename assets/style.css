@@ -228,6 +228,21 @@ button:hover {
     background: #eef2ff;
 }
 
+.button-danger {
+    color: #ffffff;
+    background: #dc2626;
+}
+
+.button-danger:hover {
+    background: #b91c1c;
+}
+
+.button-clear {
+    margin-top: 10px;
+    background: #f3f4f6;
+    color: #374151;
+}
+
 .button-ghost {
     width: auto;
     color: #374151;
@@ -320,21 +335,163 @@ button:hover {
 .chart-wrap {
     position: relative;
     min-height: 430px;
+    padding: 22px;
+    border-radius: calc(var(--radius) + 6px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(239, 246, 255, 0.82));
+    border: 1px solid rgba(37, 99, 235, 0.12);
 }
 
 .chart-wrap canvas {
     width: 100% !important;
     height: 430px !important;
+    display: block;
+    border-radius: 16px;
+    background: transparent;
 }
 
-.empty-state {
-    display: none;
-    border: 1px dashed #cbd5e1;
+.goal-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 320px;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.goal-card,
+.goal-form {
+    background: #fff;
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 34px;
+    padding: 18px;
+}
+
+.goal-card strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 13px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
     color: var(--muted);
-    background: var(--panel-soft);
-    text-align: center;
+}
+
+.goal-card p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.goal-description {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.progress-track {
+    height: 10px;
+    border-radius: 999px;
+    background: #eef2f7;
+    overflow: hidden;
+    margin-top: 14px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary), #14b8a6);
+    border-radius: 999px;
+    width: 0;
+    transition: width 260ms ease;
+}
+
+.goal-form label {
+    display: block;
+    margin-bottom: 12px;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.goal-input-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: center;
+}
+
+.goal-input-row input {
+    width: 100%;
+}
+
+.filter-row {
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-button {
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: #fff;
+    cursor: pointer;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.filter-button.active {
+    background: linear-gradient(135deg, var(--primary), #1d4ed8);
+    color: #fff;
+    border-color: transparent;
+}
+
+.entry-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.entry-table th,
+.entry-table td {
+    padding: 16px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.entry-table th {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.entry-table td {
+    color: var(--text);
+    vertical-align: middle;
+}
+
+.entry-table .actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.entry-table .actions .button {
+    width: auto !important;
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    min-width: 88px;
+}
+
+.entry-table .actions form {
+    margin: 0;
+}
+
+.table-wrap {
+    overflow-x: auto;
 }
 
 .empty-state.is-visible {
@@ -368,7 +525,7 @@ button:hover {
     }
 
     .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -410,9 +567,18 @@ button:hover {
         flex-direction: column;
     }
 
+    .goal-panel {
+        grid-template-columns: 1fr;
+    }
+
     .chart-wrap,
     .chart-wrap canvas {
-        min-height: 320px;
-        height: 320px !important;
+        min-height: 420px;
+        height: 420px !important;
+    }
+
+    /* Reduce chart padding on very small screens to give more space */
+    .chart-wrap {
+        padding: 12px;
     }
 }
